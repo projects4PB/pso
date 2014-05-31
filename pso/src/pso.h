@@ -5,18 +5,14 @@
  *      Author: darkon
  */
 
-#ifndef PSO_H_
-#define PSO_H_
 
 
+const int DIM=2;
+const int SIZE=8;
+const int C1=2;
+const int C2=2;
+const int MAXSPEED=60;
+const int ITERATIONS=1;
+const double SEED=1;
 
-#define int DIM 2;
-#define int SIZE 8;
-#define int C1 2;
-#define int C2 2;
-#define int MAXSPEED 60;
-#define int ITERATIONS 1;
-#define double SEED 1;
 
-
-#endif /* PSO_H_ */

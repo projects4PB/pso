@@ -1,4 +1,8 @@
+#include <cstdlib>
+#import "pso.h"
+
 using namespace std;
+
 
 class RandomPSO
 {
@@ -9,9 +13,9 @@ class RandomPSO
 };
 
 RandomPSO::RandomPSO() {
-	seed = 3;
+	seed = SEED;
 }
 
 RandomPSO::RandomPSO(double seed) {
-
+	this->seed=srand(seed);
 }
