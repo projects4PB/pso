@@ -1,23 +1,19 @@
-/*
- * random.cpp
- *
- *  Created on: 31 maj 2014
- *      Author: darkon
- */
+using namespace std;
 
+class RandomPSO
+{
+	public:
+		RandomPSO();
+		RandomPSO(double);
+		double seed;
+};
 
-
-public random() {
-	double seed=1;
-
-
-
-
-public random() {
+RandomPSO::RandomPSO() {
+	seed = 3;
 }
 
-public random(double seed) {
+RandomPSO::RandomPSO(double seed) {
 
 }
 
-}
+int main() {}
