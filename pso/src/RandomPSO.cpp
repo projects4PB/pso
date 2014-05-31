@@ -1,6 +1,6 @@
 #include <cstdlib>
-#import "pso.h"
-#import "RandomPSO.h"
+#include "pso.h"
+#include "RandomPSO.h"
 #include <iostream>
 using namespace std;
 
@@ -8,12 +8,11 @@ using namespace std;
 
 
 RandomPSO::RandomPSO() {
-	seed = SEED;
-	srand(seed);
+
+	srand(SEED);
 }
 
-RandomPSO::RandomPSO(double seed2) {
-	seed = seed2;
+RandomPSO::RandomPSO(double seed) {
 	srand(seed);
 }
 
@@ -26,3 +25,8 @@ double RandomPSO::random()
 	return x/1000.0;
 }
 
+double RandomPSO::random01()
+{
+	int x=rand()%1000;
+	return x/1000.0;
+}

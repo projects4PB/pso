@@ -17,7 +17,7 @@ int main() {
 	//particle czastki[100];
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 	RandomPSO* rand = new RandomPSO();
-	cout << rand->random()<<endl;
+	cout << rand->random01()<<endl;
 	cout<<"czastka:"<<endl;
 	particle* part= new particle(5, 847382749798543);
 	double *loc=part->getLocationArray();

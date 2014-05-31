@@ -10,12 +10,10 @@
 class RandomPSO
 {
 	public:
-		double seed;
-
-	public:
 		RandomPSO();
 		RandomPSO(double seed);
 		double random();
+		double random01();
 };
 
 #endif /* RANDOMPSO_H_ */

@@ -12,6 +12,7 @@ class particle {
 public:
 	double velocity;
 	double pbest;
+	double *pbestLoc;
 	double *loc;
 	int dim;
 
@@ -21,6 +22,8 @@ public:
 	double getVelocity();
 	double* getLocationArray();
 	double getDistance();
+	double* getpbestLoc();
+	void setpbestLoc();
 };
 
 

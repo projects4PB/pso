@@ -44,3 +44,12 @@ double particle::getDistance()
 	}
 	return sqrt(distance);
 }
+double* particle::getpbestLoc()
+{
+	return loc;
+}
+
+void particle::setpbestLoc()
+{
+	pbestLoc=loc;
+}
