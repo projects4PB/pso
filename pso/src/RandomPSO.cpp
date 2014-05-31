@@ -15,5 +15,3 @@ RandomPSO::RandomPSO() {
 RandomPSO::RandomPSO(double seed) {
 
 }
-
-int main() {}
