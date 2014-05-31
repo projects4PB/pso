@@ -7,6 +7,7 @@
 #include <iostream>
 #include "particle.h"
 #include "RandomPSO.h"
+#include <cmath>
 using namespace std;
 particle::particle(int dim, double seed) {
 	loc= new double[dim];
@@ -15,11 +16,9 @@ particle::particle(int dim, double seed) {
 	{
 		loc[i]=rand->random();
 	}
+	this->dim=dim;
 }
 
-particle::~particle() {
-	// TODO Auto-generated destructor stub
-}
 
 double particle::getVelocity()
 {
@@ -34,4 +33,14 @@ double* particle::getLocationArray()
 //	}
 	cout<<endl;
 	return loc;
+}
+
+double particle::getDistance()
+{
+	double distance=0;
+	for(int i=0;i<dim;i++)
+	{
+		distance+=pow(loc[i],2);
+	}
+	return sqrt(distance);
 }

@@ -26,6 +26,7 @@ int main() {
 		cout<<loc[i]<<" ";
 	}
 	cout<<endl;
+	cout<<"odleglosc: "<<part->getDistance()<<endl;
 	//cout << "wynik" <<endl;
 
 

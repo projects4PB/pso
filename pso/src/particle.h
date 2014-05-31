@@ -13,13 +13,14 @@ public:
 	double velocity;
 	double pbest;
 	double *loc;
+	int dim;
 
 
 public:
 	particle(int dim, double seed);
-	virtual ~particle();
 	double getVelocity();
 	double* getLocationArray();
+	double getDistance();
 };
 
 
