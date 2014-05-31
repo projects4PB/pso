@@ -10,13 +10,13 @@
 
 
 
-int dim=2;
-int size=8;
-int c1=2;
-int c2=2;
-int maxSpeed=60;
-int iterations=1;
-double seed=1;
+#define int DIM 2;
+#define int SIZE 8;
+#define int C1 2;
+#define int C2 2;
+#define int MAXSPEED 60;
+#define int ITERATIONS 1;
+#define double SEED 1;
 
 
 #endif /* PSO_H_ */
