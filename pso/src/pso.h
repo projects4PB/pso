@@ -11,7 +11,7 @@ const int DIM=2;
 const int SIZE=8;
 const int C1=2;
 const int C2=2;
-const int MAXSPEED=60;
+const double MAXSPEED=60;
 const int ITERATIONS=1;
 const double SEED=1;
 

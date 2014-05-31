@@ -7,13 +7,27 @@
 //============================================================================
 
 #include <iostream>
+//#include <mpi.h>
 #include "RandomPSO.h"
+#include "particle.h"
 using namespace std;
 
 int main() {
+
+	//particle czastki[100];
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 	RandomPSO* rand = new RandomPSO();
 	cout << rand->random()<<endl;
+	cout<<"czastka:"<<endl;
+	particle* part= new particle(5, 847382749798543);
+	double *loc=part->getLocationArray();
+	for(int i=0;i<5;i++)
+	{
+		cout<<loc[i]<<" ";
+	}
+	cout<<endl;
 	//cout << "wynik" <<endl;
+
+
 	return 0;
 }

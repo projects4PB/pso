@@ -9,16 +9,19 @@ using namespace std;
 
 RandomPSO::RandomPSO() {
 	seed = SEED;
+	srand(seed);
 }
 
 RandomPSO::RandomPSO(double seed2) {
 	seed = seed2;
+	srand(seed);
 }
 
 double RandomPSO::random()
 {
-	srand(seed);
+
 	int x = rand();
+
 	x=x%65536-32768;
 	return x/1000.0;
 }
