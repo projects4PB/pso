@@ -1,21 +1,25 @@
 #include <cstdlib>
 #import "pso.h"
-
+#import "RandomPSO.h"
+#include <iostream>
 using namespace std;
 
 
-class RandomPSO
-{
-	public:
-		RandomPSO();
-		RandomPSO(double);
-		double seed;
-};
+
 
 RandomPSO::RandomPSO() {
 	seed = SEED;
 }
 
-RandomPSO::RandomPSO(double seed) {
-	this->seed=srand(seed);
+RandomPSO::RandomPSO(double seed2) {
+	seed = seed2;
 }
+
+double RandomPSO::random()
+{
+	srand(seed);
+	int x = rand();
+	x=x%65536-32768;
+	return x/1000.0;
+}
+
