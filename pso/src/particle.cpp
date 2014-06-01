@@ -4,14 +4,18 @@
  *  Created on: 31 maj 2014
  *      Author: darkon
  */
+
+
+#include <cmath>
 #include <iostream>
+
 #include "particle.h"
 #include "RandomPSO.h"
-#include <cmath>
 using namespace std;
-particle::particle(int dim, double seed) {
+
+particle::particle(int dim, RandomPSO *rand) {
 	loc= new double[dim];
-	RandomPSO* rand = new RandomPSO(seed);
+
 	for(int i=0;i<dim;i++)
 	{
 		loc[i]=rand->random();
@@ -31,7 +35,7 @@ double* particle::getLocationArray()
 //	{
 //		cout<<loc[i]<<" ";
 //	}
-	cout<<endl;
+//	cout<<endl;
 	return loc;
 }
 
