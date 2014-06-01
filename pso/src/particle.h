@@ -12,20 +12,27 @@
 class particle
 {
 public:
-	double velocity;
-	double pbest;
-	double *pbestLoc;
-	double *loc;
+	double *velocity; //predkosc wielowymiarowa
+	double pbest; //najmniejsza odleglosc
+	double *pbestLoc; //najlepsza wlasna pozycja
+	double *loc; //aktualna pozycja
 	int dim;
+	int c1, c2;
+	double maxVelocity;
+	RandomPSO random;
 
 
 public:
-	particle(int dim, RandomPSO *&random);
-	double getVelocity();
+	particle(int dim, double seed);
+	double* getVelocity();
 	double* getLocationArray();
 	double getDistance();
 	double* getpbestLoc();
 	void setpbestLoc();
+	void calculateVelocity(double* gbest);
+	void setC1(int c1);
+	void setC2(int c2);
+	void setMaxVelocity(double MaxVelocity);
 };
 
 

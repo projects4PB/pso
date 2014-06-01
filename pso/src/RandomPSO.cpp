@@ -14,7 +14,6 @@ RandomPSO::RandomPSO() {
 }
 
 RandomPSO::RandomPSO(double seed) {
-	cout<<"random"<<endl;
 	srand(seed);
 }
 
