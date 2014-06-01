@@ -12,47 +12,38 @@
 #include "particle.h"
 #include "pso.h"
 using namespace std;
-particle *czastki;
+vector<particle> czastki;
 int dim;
 int size;
-RandomPSO *rand;
 
 
-void generateParticles()
+
+void generateParticles(RandomPSO *rand)
 {
-	cout<<"pokaz co tam masz"<<endl;
-	std::vector<particle> czastki(size, particle(dim,rand));
-	//czastki= (size, particle(dim,rand));
 	for(int i=0;i<size;i++)
 	{
-		//czastki[i]=new particle(dim, rand);
-		cout<<czastki[i].getDistance()<<endl;
+		particle* temp= new particle(dim, rand);
+		czastki.push_back(*temp);
 	}
-
 }
 
 
 
 int main() {
 
-	dim=10;
-	size=15;
-	//particle czastki[100];
+	dim=5;
+	size=10;
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
-	rand = new RandomPSO(SEED);
+	RandomPSO *rand= new RandomPSO(SEED);
 	cout << rand->random01()<<endl;
-	cout<<"czastka:"<<endl;
-	//particle* part= new particle(5, *rand);
-	//double *loc=part->getLocationArray();
-//	for(int i=0;i<5;i++)
-//	{
-//		cout<<loc[i]<<" ";
-//	}
-//	cout<<endl;
-//	cout<<"odleglosc: "<<part->getDistance()<<endl;
-	//cout << "wynik" <<endl;
+	cout<<"generowanie czastek (odleglosci):"<<endl;
 
-	generateParticles();
+	generateParticles(rand);
+	for(int i=0;i<size;i++)
+	{
+		cout<<czastki[i].getDistance()<<" ";
+	}
+	cout<<endl;
 	return 0;
 }
 

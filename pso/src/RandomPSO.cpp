@@ -28,8 +28,6 @@ double RandomPSO::random()
 
 double RandomPSO::random01()
 {
-	cout<<"zero"<<endl;
 	int x=rand()%1000;
-	cout<<"jeden"<<endl;
 	return x/1000.0;
 }

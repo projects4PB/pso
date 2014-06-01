@@ -20,7 +20,7 @@ public:
 
 
 public:
-	particle(int dim, RandomPSO *random);
+	particle(int dim, RandomPSO *&random);
 	double getVelocity();
 	double* getLocationArray();
 	double getDistance();

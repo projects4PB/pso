@@ -13,12 +13,13 @@
 #include "RandomPSO.h"
 using namespace std;
 
-particle::particle(int dim, RandomPSO *rand) {
+particle::particle(int dim, RandomPSO *&rand) {
 	loc= new double[dim];
 
 	for(int i=0;i<dim;i++)
 	{
 		loc[i]=rand->random();
+
 	}
 	this->dim=dim;
 }
@@ -31,11 +32,11 @@ double particle::getVelocity()
 
 double* particle::getLocationArray()
 {
-//	for(int i=0; i<dim;i++)
-//	{
-//		cout<<loc[i]<<" ";
-//	}
-//	cout<<endl;
+	for(int i=0; i<dim;i++)
+	{
+		cout<<loc[i]<<" ";
+	}
+	cout<<endl;
 	return loc;
 }
 
