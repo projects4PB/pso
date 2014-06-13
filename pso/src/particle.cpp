@@ -16,6 +16,11 @@ using namespace std;
 particle::particle(int dim, double seed) {
 	loc= new double[dim];
 	velocity=new double[dim];
+	for(int i=0;i<dim;i++)
+	{
+		velocity[i]=0;
+	}
+
 	this->random = *new RandomPSO(seed);
 	for(int i=0;i<dim;i++)
 	{
@@ -38,11 +43,11 @@ double* particle::getVelocity()
 
 double* particle::getLocationArray()
 {
-	for(int i=0; i<dim;i++)
-	{
-		cout<<loc[i]<<"la ";
-	}
-	cout<<endl;
+//	for(int i=0; i<dim;i++)
+//	{
+//		cout<<loc[i]<<"la ";
+//	}
+//	cout<<endl;
 	return loc;
 }
 

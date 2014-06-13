@@ -18,7 +18,7 @@ int dim;
 int size;
 int iterations;
 double* gbest;
-
+int naj;
 double minDistance;
 
 void generateParticles(RandomPSO *rand)
@@ -34,9 +34,9 @@ void generateParticles(RandomPSO *rand)
 
 int main() {
 
-	dim=2;
-	size=10;
-	iterations=50;
+	dim=10;
+	size=500;
+	iterations=500;
 	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
 	RandomPSO *rand= new RandomPSO(SEED);
 	//cout << rand->random01()<<endl;
@@ -48,9 +48,11 @@ int main() {
 	minDistance=czastki[0].getDistance();
 	for(int i=0;i<size;i++)
 	{
-		if(czastki[i].getDistance()<minDistance)
+		if(czastki[i].getDistance()<minDistance || i==0)
 		{
+			//cout<<minDistance<<" na "<<czastki[i].getDistance()<<endl;
 			gbest=czastki[i].getLocationArray();
+			minDistance=czastki[i].getDistance();
 			cout<<czastki[i].getDistance()<<" "<<endl;
 		}
 	}
@@ -61,23 +63,25 @@ cout<<endl;
 		{
 			czastki[j].calculateVelocity(gbest);
 		}
+
 		for(int j=0;j<size;j++)
 		{
-			cout<<czastki[j].getDistance()<<" od ";
+			//cout<<czastki[j].getDistance()<<" od ";
 			if(czastki[j].getDistance()<minDistance)
 			{
 				double temp=minDistance;
 				minDistance=czastki[j].getDistance();
+				naj=j;
 				gbest=czastki[j].getLocationArray();
 				cout<<temp<<" "<<minDistance<<" zmiana"<<endl;
 			}
 		}
 		cout<<minDistance<<endl;
-		for(int j=0;j<dim;j++)
-		{
-			cout<<gbest[j]<<" ";
-		}
-		cout<<endl;
+//		for(int j=0;j<dim;j++)
+//		{
+//			cout<<gbest[j]<<" ";
+//		}
+//		cout<<"wymiary najlepszej "<<"odleglosc "<<czastki[naj].getDistance()<<endl;
 	}
 
 	cout<<"rozwiazanie"<<endl;
