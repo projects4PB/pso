@@ -7,7 +7,7 @@
 //============================================================================
 #include <vector>
 #include <iostream>
-//#include <mpi.h>
+#include <mpi.h>
 #include "RandomPSO.h"
 #include "particle.h"
 #include "pso.h"
@@ -32,18 +32,70 @@ void generateParticles(RandomPSO *rand)
 
 
 
-int main() {
+int main(int argc, char* argv[]) {
 
-	dim=2;
-	size=10;
-	iterations=50;
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	int npes;
+	int myrank;
+
+
+	dim=65536;
+	size=1024;
+	iterations=10;
 	RandomPSO *rand= new RandomPSO(SEED);
 	//cout << rand->random01()<<endl;
 	cout<<"generowanie czastek (odleglosci):"<<endl;
 
 	generateParticles(rand);
 
+	MPI_Init(&argc, &argv);
+
+	MPI_Comm_size(MPI_COMM_WORLD, &npes);
+	MPI_Comm_rank(MPI_COMM_WORLD, &myrank);
+
+	MPI_Request reqs[2];
+	MPI_Status statuses[2];
+
+	if(myrank == 0) {
+		//wyslij do 1 i 2
+	}
+	else {
+		// ustal pozycje w drzewie na podstawie myrank
+		int leaf_id = myrank
+
+		// ustal numer procesu nadrzednego
+		int parent_id = leaf_id - ((leaf_id - 1) % 2) - 1
+
+		// odbierz numer procesu nadrzednego
+		MPI_Recv(&parent_id, sizeof(int), MPI_INT,
+				0, 13,MPI_COMM_WORLD,&status);
+
+		// oblicz pBest
+		particle particle = czastki[myrank]
+		particle.calculateVelocity(qBest)
+		double pBest = particle.getDistance()
+
+		// wyslij zadanie wykonania obliczen
+		// do dwoch kolejnych lisci w drzewie
+		next_leafs = int[2] = { leaf_id + 1, leaf_id + 2 }
+		if(next_leafs[0] <= npes)
+		{
+			MPI_Send(&leaf_id, sizeof(int), MPI_INT,
+					next_leafs[0], 80, MPI_COMM_WORLD);
+		}
+		if(next_leafs[1] <= npes)
+		{
+			MPI_Send(&leaf_id, sizeof(int), MPI_INT,
+					next_leafs[1], 80, MPI_COMM_WORLD);
+		}
+		// odeslij wynik do req_rank
+		// jesli pBest lepszy od gBest to zamien
+	}
+	particle czastka = czastki[myrank];
+	double dist = czastka.getDistance();
+	cout << "dist: " << dist << endl;
+
+	MPI_Finalize();
+/*
 	gbest=czastki[0].getLocationArray();
 	minDistance=czastki[0].getDistance();
 	for(int i=0;i<size;i++)
@@ -85,7 +137,7 @@ cout<<endl;
 	{
 		cout<<gbest[i]<<" ";
 	}
-	cout<<endl<<"odleglosc "<<minDistance<<endl;
+	cout<<endl<<"odleglosc "<<minDistance<<endl; */
 	return 0;
 }
 
