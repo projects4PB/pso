@@ -77,6 +77,10 @@ void particle::calculateVelocity(double* gbest)
 		{
 			velocity[i]=maxVelocity;
 		}
+		else if(velocity[i]<-maxVelocity)
+		{
+			velocity[i]=-maxVelocity;
+		}
 
 	}
 	for(int i=0;i<dim;i++)
