@@ -5,6 +5,7 @@
  *      Author: darkon
  */
 #include "RandomPSO.h"
+#include <vector>
 
 #ifndef PARTICLE_H_
 #define PARTICLE_H_
@@ -12,10 +13,10 @@
 class particle
 {
 public:
-	double *velocity; //predkosc wielowymiarowa
+	std::vector<double>velocity; //predkosc wielowymiarowa
 	double pbest; //najmniejsza odleglosc
-	double *pbestLoc; //najlepsza wlasna pozycja
-	double *loc; //aktualna pozycja
+	std::vector<double>pbestLoc; //najlepsza wlasna pozycja
+	std::vector<double>loc; //aktualna pozycja
 	int dim;
 	int c1, c2;
 	double maxVelocity;
@@ -24,12 +25,12 @@ public:
 
 public:
 	particle(int dim, double seed);
-	double* getVelocity();
-	double* getLocationArray();
+	std::vector<double> getVelocity();
+	std::vector<double> getLocationArray();
 	double getDistance();
-	double* getpbestLoc();
+	std::vector<double> getpbestLoc();
 	void setpbestLoc();
-	void calculateVelocity(double* gbest);
+	void calculateVelocity(std::vector<double> gbest);
 	void setC1(int c1);
 	void setC2(int c2);
 	void setMaxVelocity(double MaxVelocity);

@@ -11,5 +11,5 @@ const int C1=2;
 const int C2=2;
 const double MAXSPEED=60;
 const int ITERATIONS=1;
-const double SEED=145535;
+const double SEED=1;
 

@@ -13,18 +13,17 @@
 #include "RandomPSO.h"
 using namespace std;
 
-particle::particle(int dim, double seed) {
-	loc= new double[dim];
-	velocity=new double[dim];
+particle::particle(int dim, double seed)
+{
 	for(int i=0;i<dim;i++)
 	{
-		velocity[i]=0;
+		velocity.push_back(0);
 	}
 
 	this->random = *new RandomPSO(seed);
 	for(int i=0;i<dim;i++)
 	{
-		loc[i]=this->random.random();
+		loc.push_back(this->random.random());
 	}
 
 	this->c1=2;
@@ -36,18 +35,13 @@ particle::particle(int dim, double seed) {
 }
 
 
-double* particle::getVelocity()
+std::vector<double> particle::getVelocity()
 {
 	return velocity;
 }
 
-double* particle::getLocationArray()
+std::vector<double> particle::getLocationArray()
 {
-//	for(int i=0; i<dim;i++)
-//	{
-//		cout<<loc[i]<<"la ";
-//	}
-//	cout<<endl;
 	return loc;
 }
 
@@ -58,9 +52,15 @@ double particle::getDistance()
 	{
 		distance+=pow(loc[i],2);
 	}
-	return sqrt(distance);
+	distance=sqrt(distance);
+	if(distance<pbest)
+	{
+		setpbestLoc();
+		pbest=distance;
+	}
+	return distance;
 }
-double* particle::getpbestLoc()
+std::vector<double> particle::getpbestLoc()
 {
 	return loc;
 }
@@ -70,7 +70,7 @@ void particle::setpbestLoc()
 	pbestLoc=loc;
 }
 
-void particle::calculateVelocity(double* gbest)
+void particle::calculateVelocity(vector<double> gbest)
 {
 	double t1=0, t2=0;
 	for(int i=0;i<dim;i++)
@@ -86,11 +86,10 @@ void particle::calculateVelocity(double* gbest)
 		{
 			velocity[i]=-maxVelocity;
 		}
-
 	}
 	for(int i=0;i<dim;i++)
 	{
-		loc[i]+=velocity[i];
+			loc[i]+=velocity[i];
 	}
 
 }
