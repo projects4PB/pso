@@ -88,12 +88,18 @@ int main(int argc, char** argv) {
 			seed=atof(argv[i]);
 		}
 	}
-	cout<<"parametry"<<endl<<"D="<<dim<<" m="<<size<<" c="<<c1<<" C="<<c2<<" V="<<maxSpeed<<" i="<<iterations<<" s="<<seed<<endl;
-	cout << "!!!Hello World!!!" << endl; // prints !!!Hello World!!!
+	cout<<"parametry"<<endl<<" D="<<dim<<" m="<<size<<" c="<<c1<<" C="<<c2<<" V="<<maxSpeed<<" i="<<iterations<<" s="<<seed<<endl;
+	cout << "!!!Hello World!!!" << endl;
 	RandomPSO *rand= new RandomPSO(seed);
 	cout<<"generowanie czastek (odleglosci):"<<endl;
 	ofstream plik;
+	ofstream najlepszy;
+	ofstream stan;
 	plik.open("wymiary.txt");
+	najlepszy.open("najlepszy.txt");
+	stan.open("stan.txt");
+	najlepszy<<"#parametry"<<endl<<"D="<<dim<<" m="<<size<<" c="<<c1<<" C="<<c2<<" V="<<maxSpeed<<" i="<<iterations<<" s="<<seed<<endl;
+	stan<<"#parametry"<<endl<<"D="<<dim<<" m="<<size<<" c="<<c1<<" C="<<c2<<" V="<<maxSpeed<<" i="<<iterations<<" s="<<seed<<endl;
 	plik<<"#Dimension="<<dim<<" #Size="<<size<<" #Iterations="<<iterations<<endl;
 	generateParticles(rand);
 
@@ -133,14 +139,16 @@ cout<<"petle"<<endl;
 //		}
 		cout<<endl<<"wyzej wymiary najlepszej "<<"odleglosc "<<minDistance<<" iteracja: "<<i<<endl;
 		temp=czastki[naj].getLocationArray();
-//		for(int j=0;j<dim;j++)
-//		{
-//			plik<<temp[j]<<"\t"<<endl;
-//		}
-//
-//		plik<<"\t"<<czastki[naj].getDistance()<<" "<<naj<<endl;
+		stan<<i;
+		for(int j=0;j<size;j++)
+		{
+			stan<<" "<<czastki[j].getDistance();
+		}
+		stan<<endl;
+		najlepszy<<i<<" "<<minDistance<<endl;
 	}
 	plik.close();
+	najlepszy.close();
 	cout<<"rozwiazanie"<<endl;
 	for(int i=0; i<dim;i++)
 	{
